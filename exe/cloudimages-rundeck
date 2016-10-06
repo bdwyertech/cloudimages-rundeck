@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+# encoding: UTF-8
+# Cloud Image Information Provider for RunDeck
+# Brian Dwyer - Intelligent Digital Services - 10/6/16
+
+lib = File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib'))
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
+# => Catch Ctrl+C's to avoid stack traces
+Signal.trap('INT') { abort }
+
+require 'cloudimages-rundeck'
+
+CloudImagesRunDeck::CLI.run(ARGV)
