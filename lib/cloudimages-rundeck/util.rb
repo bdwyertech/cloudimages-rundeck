@@ -38,6 +38,13 @@ module CloudImagesRunDeck
       end
     end
 
+    # => Check if a string is an existing file, and return it's content
+    def filestring(file, size = 8192)
+      return unless file
+      return file unless file.is_a?(String) && File.file?(file) && File.size(file) <= size
+      File.read(file)
+    end
+
     #############################
     # =>    Serialization    <= #
     #############################

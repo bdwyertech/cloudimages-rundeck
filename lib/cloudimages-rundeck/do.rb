@@ -19,7 +19,7 @@ module CloudImagesRunDeck
 
     def do_client
       # => Instantiate a new DigitalOcean Client
-      DropletKit::Client.new(access_token: Config.do_api_key)
+      DropletKit::Client.new(access_token: Util.filestring(Config.do_api_key))
     end
 
     #
