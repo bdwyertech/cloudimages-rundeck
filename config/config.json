@@ -1,0 +1,7 @@
+{
+  "cache_timeout": 30,
+  "bind": "0.0.0.0",
+  "port": 9129,
+  "environment": "production",
+  "do_api_key": "abc123"
+}
