@@ -36,13 +36,13 @@ module CloudImagesRunDeck
     #
     # => Custom-Tailor for Resource-JSON & Optionally Filter by Image Name
     #
-    def list_images # rubocop:disable MethodLength
+    def list_images # rubocop:disable AbcSize, MethodLength
       list = images
       return list.message if list.is_a?(DropletKit::Error)
       list = list.collect do |image|
         {
           'name' => image['name'] || image['message'],
-          'value' => image['id']
+          'value' => image['id'].to_s
         }
       end
       filter = Util.serialize_csv(Config.query_params['filter'])
