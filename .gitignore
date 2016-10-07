@@ -6,3 +6,4 @@
 *.un~
 pkg/
 vendor/
+config.json
