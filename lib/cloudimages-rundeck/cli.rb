@@ -64,17 +64,17 @@ module CloudImagesRunDeck
       cli = Options.new
       cli.parse_options(argv)
 
-      # => Parse JSON Config File (If Specified & Exists)
-      json_config = Util.parse_json_config(cli.config[:config_file])
+      # => Parse JSON Config File (If Specified and Exists)
+      json_config = Util.parse_json_config(cli.config[:config_file] || Config.config_file)
 
       # => Grab the Default Values
-      default = CloudImagesRunDeck::Config.options
+      default = Config.options
 
-      # => Merge Configuration (JSON File Wins)
+      # => Merge Configuration (CLI Wins)
       config = [default, json_config, cli.config].compact.reduce(:merge)
 
       # => Apply Configuration
-      CloudImagesRunDeck::Config.setup do |cfg|
+      Config.setup do |cfg|
         cfg.config_file         = config[:config_file]
         cfg.cache_timeout       = config[:cache_timeout].to_i
         cfg.bind                = config[:bind]
@@ -84,7 +84,7 @@ module CloudImagesRunDeck
       end
 
       # => Launch the API
-      CloudImagesRunDeck::API.run!
+      API.run!
     end
   end
 end
