@@ -57,10 +57,14 @@ module CloudImagesRunDeck
       # => Ensure we have a Filter
       return unless Config.query_params['filter'] && Config.query_params['keep']
 
-      # => Grab the Images
+      # => Grab the Images & Sort by ImageID
       # => NOTE: If ImageID's aren't reliable, try DateTime.parse(hsh['name']) for sorting
-      list = list_images.sort_by { |img| img['value'] }.reverse.drop(Config.query_params['keep'].to_i)
-      Array(list).each do |img|
+      cleanup = list_images.sort_by { |img| img['value'] }.reverse.drop(Config.query_params['keep'].to_i)
+
+      return unless cleanup.is_a?(Array)
+
+      # => Delete the Images
+      cleanup.each do |img|
         do_client.images.delete(id: img['value'])
       end
     end
