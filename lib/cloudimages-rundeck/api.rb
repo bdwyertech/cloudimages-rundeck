@@ -95,6 +95,11 @@ module CloudImagesRunDeck
 
         Do.list_images.to_json
       end
+
+      # => Cleanup Images
+      post '/cleanup' do
+        Do.cleanup_images.to_json
+      end
     end
   end
 end

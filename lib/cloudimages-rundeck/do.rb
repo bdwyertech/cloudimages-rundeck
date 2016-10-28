@@ -49,5 +49,20 @@ module CloudImagesRunDeck
       return list.select { |i| filter.any? { |f| i['name'] =~ /#{f}/i } } if filter
       list
     end
+
+    #
+    # => Image Cleanup
+    #
+    def cleanup_images # rubocop:disable AbcSize
+      # => Ensure we have a Filter
+      return unless Config.query_params['filter'] && Config.query_params['keep']
+
+      # => Grab the Images
+      # => NOTE: If ImageID's aren't reliable, try DateTime.parse(hsh['name']) for sorting
+      list = list_images.sort_by { |img| img['value'] }.reverse.drop(Config.query_params['keep'].to_i)
+      Array(list).each do |img|
+        do_client.images.delete(id: img['value'])
+      end
+    end
   end
 end
