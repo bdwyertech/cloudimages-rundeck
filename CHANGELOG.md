@@ -2,6 +2,13 @@ CloudImages-RunDeck Changelog
 =========================
 This file is used to list changes made in each version of the `cloudimages-rundeck` gem.
 
+v0.1.4 (2016-10-31)
+-------------------
+### Improvements
+- Ensure that we never nuke all images during cleanup.  `keep` must be set greater than or equal to 1
+- Better return validation & error handling for `cleanup` endpoint
+- Security: Hide `config` endpoint unless running in development mode
+
 v0.1.3 (2016-10-28)
 -------------------
 ### Improvements
