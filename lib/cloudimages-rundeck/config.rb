@@ -1,7 +1,7 @@
 # Encoding: UTF-8
 #
 # Gem Name:: cloudimages-rundeck
-# DeployInfo:: Config
+# CloudImagesRunDeck:: Config
 #
 # Copyright (C) 2016 Brian Dwyer - Intelligent Digital Services
 #

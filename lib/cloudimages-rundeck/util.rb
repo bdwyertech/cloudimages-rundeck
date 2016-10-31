@@ -2,7 +2,7 @@
 # rubocop: disable LineLength
 #
 # Gem Name:: cloudimages-rundeck
-# DeployInfo:: Util
+# CloudImagesRunDeck:: Util
 #
 # Copyright (C) 2016 Brian Dwyer - Intelligent Digital Services
 #

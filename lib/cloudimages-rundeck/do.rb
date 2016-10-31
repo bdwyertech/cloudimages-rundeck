@@ -2,7 +2,7 @@
 # rubocop: disable LineLength
 #
 # Gem Name:: cloudimages-rundeck
-# DeployInfo:: Do
+# CloudImagesRunDeck:: Do
 #
 # Copyright (C) 2016 Brian Dwyer - Intelligent Digital Services
 #
@@ -55,7 +55,7 @@ module CloudImagesRunDeck
     #
     def cleanup_images # rubocop:disable AbcSize
       # => Ensure we have a Filter
-      return unless Config.query_params['filter'] && Config.query_params['keep']
+      return unless Config.query_params['filter'] && Config.query_params['keep'].to_i >= 1
 
       # => Grab the Images & Sort by ImageID
       # => NOTE: If ImageID's aren't reliable, try DateTime.parse(hsh['name']) for sorting

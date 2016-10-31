@@ -2,7 +2,7 @@
 # rubocop: disable LineLength
 #
 # Gem Name:: cloudimages-rundeck
-# DeployInfo:: API
+# CloudImagesRunDeck:: API
 #
 # Copyright (C) 2016 Brian Dwyer - Intelligent Digital Services
 #
@@ -67,7 +67,7 @@ module CloudImagesRunDeck
           { 'Sinatra Info' => env }
         ].compact
       )
-    end
+    end if development?
 
     ########################
     # =>    JSON API    <= #

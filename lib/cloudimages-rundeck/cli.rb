@@ -2,7 +2,7 @@
 # rubocop: disable LineLength, MethodLength, AbcSize
 #
 # Gem Name:: cloudimages-rundeck
-# DeployInfo:: CLI
+# CloudImagesRunDeck:: CLI
 #
 # Copyright (C) 2016 Brian Dwyer - Intelligent Digital Services
 #
@@ -54,8 +54,7 @@ module CloudImagesRunDeck
       option :environment,
              short: '-e ENV',
              long: '--env ENV',
-             description: 'Sets the environment for cloudimages-rundeck to execute under. Use "development" for more logging.',
-             default: 'production'
+             description: "Sets the environment for cloudimages-rundeck to execute under. Use 'development' for more logging. (Default: #{Config.environment})"
     end
 
     # => Launch the Application
@@ -79,7 +78,7 @@ module CloudImagesRunDeck
         cfg.cache_timeout       = config[:cache_timeout].to_i
         cfg.bind                = config[:bind]
         cfg.port                = config[:port]
-        cfg.environment         = config[:environment].to_sym
+        cfg.environment         = config[:environment].to_sym.downcase
         cfg.do_api_key          = config[:do_api_key]
       end
 
