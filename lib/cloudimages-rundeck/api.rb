@@ -51,23 +51,25 @@ module CloudImagesRunDeck
     ########################
 
     # => Current Configuration & Healthcheck Endpoint
-    get '/config' do
-      content_type 'application/json'
-      JSON.pretty_generate(
-        [
-          CloudImagesRunDeck.inspect + ' is up and running!',
-          'Author: ' + Config.author,
-          'Environment: ' + Config.environment.to_s,
-          'Root: ' + Config.root.to_s,
-          'Config File: ' + (Config.config_file if File.exist?(Config.config_file)).to_s,
-          'Params: ' + params.inspect,
-          'Cache Timeout: ' + Config.cache_timeout.to_s,
-          'BRIAN IS COOooooooL',
-          { AppConfig: Config.options },
-          { 'Sinatra Info' => env }
-        ].compact
-      )
-    end if development?
+    if development?
+      get '/config' do
+        content_type 'application/json'
+        JSON.pretty_generate(
+          [
+            CloudImagesRunDeck.inspect + ' is up and running!',
+            'Author: ' + Config.author,
+            'Environment: ' + Config.environment.to_s,
+            'Root: ' + Config.root.to_s,
+            'Config File: ' + (Config.config_file if File.exist?(Config.config_file)).to_s,
+            'Params: ' + params.inspect,
+            'Cache Timeout: ' + Config.cache_timeout.to_s,
+            'BRIAN IS COOooooooL',
+            { AppConfig: Config.options },
+            { 'Sinatra Info' => env }
+          ].compact
+        )
+      end
+    end
 
     ########################
     # =>    JSON API    <= #
